@@ -9,7 +9,7 @@ import { CarouselItem, CarouselContent, CarouselPrevious, CarouselNext, Carousel
 
 export default function Component() {
   return (
-    <main key="1" className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center h-screen py-2">
       <div className="flex flex-col items-center border-b-2 pb-12 justify-center space-y-4">
         <Avatar className="h-24 md:h-32 w-24 md:w-32">
           <AvatarImage alt="@shadcn" src="/placeholder-avatar.jpg" />
@@ -62,9 +62,9 @@ export default function Component() {
           </Dialog>
       </div>
 
-      <div className="w-full py-16 mx-auto mt-10">
+      <div className="w-2/3 overflow-hidden py-16 mx-auto mt-10">
         <h2 className="text-2xl font-bold text-center mb-4">Users to Follow</h2>
-        <Carousel className="w-1/2 md:w-full flex justify-center mx-auto max-w-2xl">
+        <Carousel className="w-full md:w-full flex justify-center mx-auto max-w-2xl">
           <CarouselContent>
             <CarouselItem className='basis-3/3 md:basis-2/3 lg:basis-1/3'>
               <div className="p-1">
@@ -124,7 +124,7 @@ export default function Component() {
           <CarouselNext />
         </Carousel>
       </div>
-    </main>
+    </div>
   )
 }
 

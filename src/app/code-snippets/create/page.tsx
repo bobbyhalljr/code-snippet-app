@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import Settings from "@/components/common/settings";
+import { CardHeader, CardContent, Card, CardTitle } from "@/components/ui/card";
 import {
   SelectValue,
   SelectTrigger,
@@ -38,19 +40,19 @@ export default function Component() {
         <h1 className="font-semibold text-lg md:text-2xl">My Snippets</h1>
         <Dialog>
           <DialogTrigger asChild>
-            <Button size='lg'>
-              <PlusIcon className='w-6 h-6 mr-1'/>
-              Add Snippet 
+            <Button size="lg">
+              <PlusIcon className="w-6 h-6 mr-1" />
+              Add Snippet
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
-              <DialogTitle>Edit Snippet</DialogTitle>
+              <DialogTitle>Create Snippet</DialogTitle>
               <DialogDescription>
-                Make changes to your snippet here. Click save when you're done.
+                Create your code snippets here. Click save when you're done.
               </DialogDescription>
             </DialogHeader>
-            <div className="grid gap-4 py-4">
+            <div className="grid gap-4 py-4 overflow-y-scroll">
               <div className="grid grid-cols-4 items-center gap-4">
                 <Label className="text-right" htmlFor="title">
                   Title
@@ -100,16 +102,43 @@ export default function Component() {
                   </SelectContent>
                 </Select>
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label className="text-right" htmlFor="code">
-                  Code
-                </Label>
-                <Textarea
-                  className="col-span-3"
-                  id="code"
-                  placeholder="Enter your code here..."
-                />
-              </div>
+
+              {/* Settings component */}
+              <Settings />
+
+              <Card className="bg-black text-white">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <div className="flex space-x-1">
+                      <div className="h-3 w-3 rounded-full bg-[#ff5f56]" />
+                      <div className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
+                      <div className="h-3 w-3 rounded-full bg-[#27c93f]" />
+                    </div>
+                    <div className="text-sm">index.tsx</div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div
+                    className="bg-[#1e1e1e] p-4 rounded-md text-sm"
+                    contentEditable
+                  >
+                    <p className="text-[#7fdbca]">
+                      {`function Counter() className="pl-4 text-[#d6deeb]">const [count, setCount] = createSignal(0);`}
+                    </p>
+                    <p className="pl-4 text-[#d6deeb]">
+                      {`setInterval(() => className="pl-8 text-[#d6deeb]">setCount(count() + 1),`}
+                    </p>
+                    <p className="pl-8 text-[#d6deeb]">1000</p>
+                    <p className="pl-4 text-[#d6deeb]">{`});`}</p>
+                    <p className="text-[#7fdbca]">
+                      return
+                      <span className="text-[#d6deeb]">{`<div>The count is count()</div>`}</span>
+                      ;
+                    </p>
+                    <p className="text-[#7fdbca]">{`'}`}</p>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
             <DialogFooter>
               <Button type="submit">Save changes</Button>
@@ -128,14 +157,18 @@ export default function Component() {
             </TableRow>
           </TableHeader>
           <TableBody>
-          <TableRow>
+            <TableRow>
               <TableCell className="font-medium">Angular Directive</TableCell>
               <TableCell className="hidden md:table-cell">Angular</TableCell>
               <TableCell className="hidden md:table-cell">2024-01-03</TableCell>
               <TableCell className="flex">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button className='flex items-center' size="sm" variant="outline">
+                    <Button
+                      className="flex items-center"
+                      size="sm"
+                      variant="outline"
+                    >
                       Edit
                       <EditIcon className="ml-1" />
                     </Button>
@@ -148,26 +181,24 @@ export default function Component() {
                         you're done.
                       </DialogDescription>
                     </DialogHeader>
-                    <div className="grid gap-4 py-4">
+                    <div className="grid gap-4 py-4 overflow-y-scroll">
                       <div className="grid grid-cols-4 items-center gap-4">
                         <Label className="text-right" htmlFor="title">
                           Title
                         </Label>
-                        <Input
-                          className="col-span-3"
-                          defaultValue="Default Title"
-                          id="title"
-                        />
+                        <Input className="col-span-3" id="title" />
                       </div>
                       <div className="grid grid-cols-4 items-center gap-4">
                         <Label className="text-right" htmlFor="description">
                           Description
                         </Label>
-                        <Input
-                          className="col-span-3"
-                          defaultValue="Default Description"
-                          id="description"
-                        />
+                        <Input className="col-span-3" id="description" />
+                      </div>
+                      <div className="grid grid-cols-4 items-center gap-4">
+                        <Label className="text-right" htmlFor="tags">
+                          Tags
+                        </Label>
+                        <Input className="col-span-3" id="tags" />
                       </div>
                       <div className="grid grid-cols-4 items-center gap-4">
                         <Label className="text-right" htmlFor="language">
@@ -175,14 +206,11 @@ export default function Component() {
                         </Label>
                         <Select className="col-span-3" id="language">
                           <SelectTrigger className="w-24">
-                            <SelectValue placeholder="javascript" />
+                            <SelectValue placeholder="Language" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="javascript">
                               JavaScript
-                            </SelectItem>
-                            <SelectItem value="typescript">
-                              TypeScript
                             </SelectItem>
                             <SelectItem value="python">Python</SelectItem>
                             <SelectItem value="java">Java</SelectItem>
@@ -197,7 +225,7 @@ export default function Component() {
                         </Label>
                         <Select className="col-span-3" id="visibility">
                           <SelectTrigger className="w-24">
-                            <SelectValue placeholder="public" />
+                            <SelectValue placeholder="Visibility" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="public">Public</SelectItem>
@@ -205,16 +233,43 @@ export default function Component() {
                           </SelectContent>
                         </Select>
                       </div>
-                      <div className="grid grid-cols-4 items-center gap-4">
-                        <Label className="text-right" htmlFor="code">
-                          Code
-                        </Label>
-                        <Textarea
-                          className="col-span-3"
-                          defaultValue="// Enter your code here..."
-                          id="code"
-                        />
-                      </div>
+
+                      {/* Settings component */}
+                      <Settings />
+
+                      <Card className="bg-black text-white">
+                        <CardHeader>
+                          <div className="flex items-center justify-between">
+                            <div className="flex space-x-1">
+                              <div className="h-3 w-3 rounded-full bg-[#ff5f56]" />
+                              <div className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
+                              <div className="h-3 w-3 rounded-full bg-[#27c93f]" />
+                            </div>
+                            <div className="text-sm">index.tsx</div>
+                          </div>
+                        </CardHeader>
+                        <CardContent>
+                          <div
+                            className="bg-[#1e1e1e] p-4 rounded-md text-sm"
+                            contentEditable
+                          >
+                            <p className="text-[#7fdbca]">
+                              {`function Counter() className="pl-4 text-[#d6deeb]">const [count, setCount] = createSignal(0);`}
+                            </p>
+                            <p className="pl-4 text-[#d6deeb]">
+                              {`setInterval(() => className="pl-8 text-[#d6deeb]">setCount(count() + 1),`}
+                            </p>
+                            <p className="pl-8 text-[#d6deeb]">1000</p>
+                            <p className="pl-4 text-[#d6deeb]">{`});`}</p>
+                            <p className="text-[#7fdbca]">
+                              return
+                              <span className="text-[#d6deeb]">{`<div>The count is count()</div>`}</span>
+                              ;
+                            </p>
+                            <p className="text-[#7fdbca]">{`'}`}</p>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </div>
                     <DialogFooter>
                       <Button type="submit">Save changes</Button>
@@ -299,7 +354,10 @@ export default function Component() {
                           <MessageCircleIcon className="mr-2 h-5 w-5" />
                           Send as Message
                         </Button>
-                        <Button size="lg" className="w-full flex bg-slate-500 hover:bg-slate-800/90 text-white items-center">
+                        <Button
+                          size="lg"
+                          className="w-full flex bg-slate-500 hover:bg-slate-800/90 text-white items-center"
+                        >
                           <ImportIcon className="mr-2 h-5 w-5" />
                           Export Code Snippet
                         </Button>
@@ -317,7 +375,11 @@ export default function Component() {
               <TableCell className="flex">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button className='flex items-center' size="sm" variant="outline">
+                    <Button
+                      className="flex items-center"
+                      size="sm"
+                      variant="outline"
+                    >
                       Edit
                       <EditIcon className="ml-1" />
                     </Button>
@@ -481,7 +543,10 @@ export default function Component() {
                           <MessageCircleIcon className="mr-2 h-5 w-5" />
                           Send as Message
                         </Button>
-                        <Button size="lg" className="w-full flex bg-slate-500 hover:bg-slate-800/90 text-white items-center">
+                        <Button
+                          size="lg"
+                          className="w-full flex bg-slate-500 hover:bg-slate-800/90 text-white items-center"
+                        >
                           <ImportIcon className="mr-2 h-5 w-5" />
                           Export Code Snippet
                         </Button>
@@ -499,7 +564,11 @@ export default function Component() {
               <TableCell className="flex">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button className='flex items-center' size="sm" variant="outline">
+                    <Button
+                      className="flex items-center"
+                      size="sm"
+                      variant="outline"
+                    >
                       Edit
                       <EditIcon className="ml-1" />
                     </Button>
@@ -634,7 +703,7 @@ export default function Component() {
                         Share this code snippet to your favorite social media
                         platforms, send through message or export it.
                       </p>
-                      <div className="w-2/3 border p-4 space-y-6 rounded-lg mx-auto">
+                      <div className="w-full border p-4 space-y-6 rounded-lg mx-auto">
                         <Button
                           className="w-full mb-2 mt-8 flex items-center"
                           size="lg"
@@ -663,7 +732,10 @@ export default function Component() {
                           <MessageCircleIcon className="mr-2 h-5 w-5" />
                           Send as Message
                         </Button>
-                        <Button size="lg" className="w-full flex bg-slate-500 hover:bg-slate-800/90 text-white items-center">
+                        <Button
+                          size="lg"
+                          className="w-full flex bg-slate-500 hover:bg-slate-800/90 text-white items-center"
+                        >
                           <ImportIcon className="mr-2 h-5 w-5" />
                           Export Code Snippet
                         </Button>
@@ -804,7 +876,23 @@ function SettingsIcon(props: any) {
 
 function PlusIcon(props: any) {
   return (
-  <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>  );
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-plus"
+    >
+      <path d="M5 12h14" />
+      <path d="M12 5v14" />
+    </svg>
+  );
 }
 
 function TwitterIcon(props) {
