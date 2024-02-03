@@ -12,11 +12,13 @@ import { Textarea } from "@/components/ui/textarea"
 export default function Component() {
   return (
     <div key="1" className="flex flex-col min-h-screen">
-      <header className="flex items-center justify-between p-4 bg-gray-100 dark:bg-gray-800">
-        <Link className="text-lg flex items-center font-semibold" href="#">
-          <ArrowLeftIcon className="h-6 w-6 mr-2" />
-          Back to Feed
-        </Link>
+      <header className="flex items-center justify-between p-4">
+        <Button variant='link'>
+          <Link className="text-lg flex items-center font-semibold" href="/code-snippets/feed">
+            <ArrowLeftIcon className="h-6 w-6 mr-2" />
+            Back to Feed
+          </Link>
+        </Button>
         <div className="flex items-center gap-4">
           <Dialog>
             <DialogTrigger asChild>
@@ -29,18 +31,16 @@ export default function Component() {
               <DialogHeader>
                 <DialogTitle>Rate this snippet</DialogTitle>
               </DialogHeader>
-              <div className="flex items-center gap-2">
-                <StarIcon className="w-5 h-5 fill-primary" />
-                <StarIcon className="w-5 h-5 fill-primary" />
-                <StarIcon className="w-5 h-5 fill-primary" />
+              <div className="flex items-center gap-2 mt-4 md:mt-0 mx-auto md:mx-0">
+                <StarIcon className="w-5 h-5 fill-yellow-400 stroke-yellow-400" />
+                <StarIcon className="w-5 h-5 fill-yellow-400 stroke-yellow-400" />
+                <StarIcon className="w-5 h-5 fill-yellow-400 stroke-yellow-400" />
                 <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
                 <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
               </div>
-              <DialogFooter>
-                <Button>Submit</Button>
-                <div>
-                  <Button variant="outline">Cancel</Button>
-                </div>
+              <DialogFooter className='mt-6 md:mt-0'>
+                <Button className='mt-2 md:mt-0'>Submit</Button>
+                <Button variant="outline">Cancel</Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>
@@ -110,9 +110,9 @@ export default function Component() {
                     </div>
                   </div>
                 </div>
-                <form className="mt-6">
-                  <Label htmlFor="comment">Leave a comment</Label>
-                  <Textarea className="mt-1" id="comment" />
+                <form className="mt-8 w-[90%] mx-auto">
+                  <Label className='' htmlFor="comment">Leave a comment</Label>
+                  <Textarea className="mt-2" id="comment" />
                   <Button className="mt-4" type="submit">
                     Post Comment
                   </Button>

@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link"
-import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
+import { CardTitle, CardHeader, CardContent, Card, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 
@@ -21,7 +21,7 @@ export default function Component(){
                   alt="Code Snippet"
                   className="rounded-lg object-cover"
                   height="200"
-                  src="/placeholder.svg"
+                  src="/coding.jpg"
                   style={{
                     aspectRatio: "300/200",
                     objectFit: "cover",
@@ -30,8 +30,10 @@ export default function Component(){
                 />
                 <h3 className="text-lg font-semibold">Code Snippet 1</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">A short description of the code snippet.</p>
-                <Button className="mt-auto" variant="outline">
-                  View Code
+                <Button className="mt-auto">
+                  <Link href='/code-snippets/details'>
+                    View Code
+                  </Link>
                 </Button>
               </div>
               <div className="flex flex-col space-y-2">
@@ -39,7 +41,7 @@ export default function Component(){
                   alt="Code Snippet"
                   className="rounded-lg object-cover"
                   height="200"
-                  src="/placeholder.svg"
+                  src="/coding.jpg"
                   style={{
                     aspectRatio: "300/200",
                     objectFit: "cover",
@@ -48,8 +50,10 @@ export default function Component(){
                 />
                 <h3 className="text-lg font-semibold">Code Snippet 2</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">A short description of the code snippet.</p>
-                <Button className="mt-auto" variant="outline">
-                  View Code
+                <Button className="mt-auto">
+                  <Link href='/code-snippets/details'>
+                    View Code
+                  </Link>
                 </Button>
               </div>
               <div className="flex flex-col space-y-2">
@@ -57,7 +61,7 @@ export default function Component(){
                   alt="Code Snippet"
                   className="rounded-lg object-cover"
                   height="200"
-                  src="/placeholder.svg"
+                  src="/coding.jpg"
                   style={{
                     aspectRatio: "300/200",
                     objectFit: "cover",
@@ -66,8 +70,10 @@ export default function Component(){
                 />
                 <h3 className="text-lg font-semibold">Code Snippet 3</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">A short description of the code snippet.</p>
-                <Button className="mt-auto" variant="outline">
-                  View Code
+                <Button className="mt-auto">
+                  <Link href='/code-snippets/details'>
+                    View Code
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -76,13 +82,13 @@ export default function Component(){
 
         <section className="space-y-8 py-12 px-8">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Featured Code Snippets</h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             <Card>
               <CardHeader>
                 <img
-                  className="w-20 h-20 object-cover rounded-lg"
+                  className="w-20 h-20 mb-4 object-cover rounded-lg"
                   height="100"
-                  src="/placeholder.svg"
+                  src="/coding.jpg"
                   style={{
                     aspectRatio: "100/100",
                     objectFit: "cover",
@@ -95,14 +101,14 @@ export default function Component(){
                 <p className="text-gray-600 dark:text-gray-400">
                   A simple and reusable form with validation using React Hook Form.
                 </p>
-                <div className="flex flex-wrap gap-2 mt-2">
+                <div className="flex flex-wrap gap-2 my-4">
                   <Badge variant="secondary">JavaScript</Badge>
                   <Badge variant="secondary">React</Badge>
                 </div>
-                <div className="flex items-center justify-between mt-4">
+                <div className="flex max-w-lg mx-2 items-center justify-between mt-4">
                   <div className="flex items-center">
-                    <EyeIcon className="h-4 w-4 mr-1" />
-                    <span>123 Views</span>
+                    <EyeIcon className="h-4 w-4 mr-1 stroke-gray-600" />
+                    <span className='text-xs text-slate-600'>123 Views</span>
                   </div>
                   <div className="flex items-center">
                     <Button size="sm" variant="ghost">
@@ -116,377 +122,20 @@ export default function Component(){
                   </div>
                 </div>
               </CardContent>
+              <CardFooter>
+                <Button className="m-2 py-4 w-full">
+                  <Link href='/code-snippets/details'>
+                    View Code
+                  </Link>
+                </Button>
+              </CardFooter>
             </Card>
             <Card>
               <CardHeader>
                 <img
-                  className="w-20 h-20 object-cover rounded-lg"
+                  className="w-20 h-20 mb-4 object-cover rounded-lg"
                   height="100"
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width="100"
-                />
-                <CardTitle>Redux Toolkit</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 dark:text-gray-400">
-                  The official, opinionated, batteries-included toolset for efficient Redux development.
-                </p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <Badge variant="secondary">JavaScript</Badge>
-                  <Badge variant="secondary">React</Badge>
-                  <Badge variant="secondary">Redux</Badge>
-                </div>
-                <div className="flex items-center justify-between mt-4">
-                  <div className="flex items-center">
-                    <EyeIcon className="h-4 w-4 mr-1" />
-                    <span>456 Views</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Button size="sm" variant="ghost">
-                      <HeartIcon className="h-4 w-4 mr-1" />
-                      <span>Like</span>
-                    </Button>
-                    <Button size="sm" variant="ghost">
-                      <ShareIcon className="h-4 w-4 mr-1" />
-                      <span>Share</span>
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <img
-                  className="w-20 h-20 object-cover rounded-lg"
-                  height="100"
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width="100"
-                />
-                <CardTitle>Next.js</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 dark:text-gray-400">The React Framework for Production.</p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <Badge variant="secondary">JavaScript</Badge>
-                  <Badge variant="secondary">React</Badge>
-                  <Badge variant="secondary">Next.js</Badge>
-                </div>
-                <div className="flex items-center justify-between mt-4">
-                  <div className="flex items-center">
-                    <EyeIcon className="h-4 w-4 mr-1" />
-                    <span>789 Views</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Button size="sm" variant="ghost">
-                      <HeartIcon className="h-4 w-4 mr-1" />
-                      <span>Like</span>
-                    </Button>
-                    <Button size="sm" variant="ghost">
-                      <ShareIcon className="h-4 w-4 mr-1" />
-                      <span>Share</span>
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <img
-                  className="w-20 h-20 object-cover rounded-lg"
-                  height="100"
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width="100"
-                />
-                <CardTitle>React Query</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Fetching, caching, and updating asynchronous data in React.
-                </p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <Badge variant="secondary">JavaScript</Badge>
-                  <Badge variant="secondary">React</Badge>
-                  <Badge variant="secondary">React Query</Badge>
-                </div>
-                <div className="flex items-center justify-between mt-4">
-                  <div className="flex items-center">
-                    <EyeIcon className="h-4 w-4 mr-1" />
-                    <span>321 Views</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Button size="sm" variant="ghost">
-                      <HeartIcon className="h-4 w-4 mr-1" />
-                      <span>Like</span>
-                    </Button>
-                    <Button size="sm" variant="ghost">
-                      <ShareIcon className="h-4 w-4 mr-1" />
-                      <span>Share</span>
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <img
-                  className="w-20 h-20 object-cover rounded-lg"
-                  height="100"
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width="100"
-                />
-                <CardTitle>React Router</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 dark:text-gray-400">Declarative routing for React.</p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <Badge variant="secondary">JavaScript</Badge>
-                  <Badge variant="secondary">React</Badge>
-                  <Badge variant="secondary">React Router</Badge>
-                </div>
-                <div className="flex items-center justify-between mt-4">
-                  <div className="flex items-center">
-                    <EyeIcon className="h-4 w-4 mr-1" />
-                    <span>654 Views</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Button size="sm" variant="ghost">
-                      <HeartIcon className="h-4 w-4 mr-1" />
-                      <span>Like</span>
-                    </Button>
-                    <Button size="sm" variant="ghost">
-                      <ShareIcon className="h-4 w-4 mr-1" />
-                      <span>Share</span>
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <img
-                  className="w-20 h-20 object-cover rounded-lg"
-                  height="100"
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width="100"
-                />
-                <CardTitle>Styled Components</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 dark:text-gray-400">Visual primitives for the component age.</p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <Badge variant="secondary">JavaScript</Badge>
-                  <Badge variant="secondary">React</Badge>
-                  <Badge variant="secondary">Styled Components</Badge>
-                </div>
-                <div className="flex items-center justify-between mt-4">
-                  <div className="flex items-center">
-                    <EyeIcon className="h-4 w-4 mr-1" />
-                    <span>987 Views</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Button size="sm" variant="ghost">
-                      <HeartIcon className="h-4 w-4 mr-1" />
-                      <span>Like</span>
-                    </Button>
-                    <Button size="sm" variant="ghost">
-                      <ShareIcon className="h-4 w-4 mr-1" />
-                      <span>Share</span>
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-        <section className="space-y-8">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Popular Code Snippets</h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <Card>
-              <CardHeader>
-                <img
-                  className="w-20 h-20 object-cover rounded-lg"
-                  height="100"
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width="100"
-                />
-                <CardTitle>React Query</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Fetching, caching, and updating asynchronous data in React.
-                </p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <Badge variant="secondary">JavaScript</Badge>
-                  <Badge variant="secondary">React</Badge>
-                  <Badge variant="secondary">React Query</Badge>
-                </div>
-                <div className="flex items-center justify-between mt-4">
-                  <div className="flex items-center">
-                    <EyeIcon className="h-4 w-4 mr-1" />
-                    <span>123 Views</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Button size="sm" variant="ghost">
-                      <HeartIcon className="h-4 w-4 mr-1" />
-                      <span>Like</span>
-                    </Button>
-                    <Button size="sm" variant="ghost">
-                      <ShareIcon className="h-4 w-4 mr-1" />
-                      <span>Share</span>
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <img
-                  className="w-20 h-20 object-cover rounded-lg"
-                  height="100"
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width="100"
-                />
-                <CardTitle>React Router</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 dark:text-gray-400">Declarative routing for React.</p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <Badge variant="secondary">JavaScript</Badge>
-                  <Badge variant="secondary">React</Badge>
-                  <Badge variant="secondary">React Router</Badge>
-                </div>
-                <div className="flex items-center justify-between mt-4">
-                  <div className="flex items-center">
-                    <EyeIcon className="h-4 w-4 mr-1" />
-                    <span>456 Views</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Button size="sm" variant="ghost">
-                      <HeartIcon className="h-4 w-4 mr-1" />
-                      <span>Like</span>
-                    </Button>
-                    <Button size="sm" variant="ghost">
-                      <ShareIcon className="h-4 w-4 mr-1" />
-                      <span>Share</span>
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <img
-                  className="w-20 h-20 object-cover rounded-lg"
-                  height="100"
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width="100"
-                />
-                <CardTitle>Redux Toolkit</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 dark:text-gray-400">
-                  The official, opinionated, batteries-included toolset for efficient Redux development.
-                </p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <Badge variant="secondary">JavaScript</Badge>
-                  <Badge variant="secondary">React</Badge>
-                  <Badge variant="secondary">Redux</Badge>
-                </div>
-                <div className="flex items-center justify-between mt-4">
-                  <div className="flex items-center">
-                    <EyeIcon className="h-4 w-4 mr-1" />
-                    <span>789 Views</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Button size="sm" variant="ghost">
-                      <HeartIcon className="h-4 w-4 mr-1" />
-                      <span>Like</span>
-                    </Button>
-                    <Button size="sm" variant="ghost">
-                      <ShareIcon className="h-4 w-4 mr-1" />
-                      <span>Share</span>
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <img
-                  className="w-20 h-20 object-cover rounded-lg"
-                  height="100"
-                  src="/placeholder.svg"
-                  style={{
-                    aspectRatio: "100/100",
-                    objectFit: "cover",
-                  }}
-                  width="100"
-                />
-                <CardTitle>Next.js</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 dark:text-gray-400">The React Framework for Production.</p>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  <Badge variant="secondary">JavaScript</Badge>
-                  <Badge variant="secondary">React</Badge>
-                  <Badge variant="secondary">Next.js</Badge>
-                </div>
-                <div className="flex items-center justify-between mt-4">
-                  <div className="flex items-center">
-                    <EyeIcon className="h-4 w-4 mr-1" />
-                    <span>321 Views</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Button size="sm" variant="ghost">
-                      <HeartIcon className="h-4 w-4 mr-1" />
-                      <span>Like</span>
-                    </Button>
-                    <Button size="sm" variant="ghost">
-                      <ShareIcon className="h-4 w-4 mr-1" />
-                      <span>Share</span>
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <img
-                  className="w-20 h-20 object-cover rounded-lg"
-                  height="100"
-                  src="/placeholder.svg"
+                  src="/coding.jpg"
                   style={{
                     aspectRatio: "100/100",
                     objectFit: "cover",
@@ -499,14 +148,14 @@ export default function Component(){
                 <p className="text-gray-600 dark:text-gray-400">
                   A simple and reusable form with validation using React Hook Form.
                 </p>
-                <div className="flex flex-wrap gap-2 mt-2">
+                <div className="flex flex-wrap gap-2 my-4">
                   <Badge variant="secondary">JavaScript</Badge>
                   <Badge variant="secondary">React</Badge>
                 </div>
-                <div className="flex items-center justify-between mt-4">
+                <div className="flex max-w-lg mx-2 items-center justify-between mt-4">
                   <div className="flex items-center">
-                    <EyeIcon className="h-4 w-4 mr-1" />
-                    <span>654 Views</span>
+                    <EyeIcon className="h-4 w-4 mr-1 stroke-gray-600" />
+                    <span className='text-xs text-slate-600'>123 Views</span>
                   </div>
                   <div className="flex items-center">
                     <Button size="sm" variant="ghost">
@@ -520,9 +169,111 @@ export default function Component(){
                   </div>
                 </div>
               </CardContent>
+              <CardFooter>
+                <Button className="m-2 py-4 w-full">
+                  <Link href='/code-snippets/details'>
+                    View Code
+                  </Link>
+                </Button>
+              </CardFooter>
+            </Card>
+            <Card>
+              <CardHeader>
+                <img
+                  className="w-20 h-20 mb-4 object-cover rounded-lg"
+                  height="100"
+                  src="/coding.jpg"
+                  style={{
+                    aspectRatio: "100/100",
+                    objectFit: "cover",
+                  }}
+                  width="100"
+                />
+                <CardTitle>React Hook Form</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 dark:text-gray-400">
+                  A simple and reusable form with validation using React Hook Form.
+                </p>
+                <div className="flex flex-wrap gap-2 my-4">
+                  <Badge variant="secondary">JavaScript</Badge>
+                  <Badge variant="secondary">React</Badge>
+                </div>
+                <div className="flex max-w-lg mx-2 items-center justify-between mt-4">
+                  <div className="flex items-center">
+                    <EyeIcon className="h-4 w-4 mr-1 stroke-gray-600" />
+                    <span className='text-xs text-slate-600'>123 Views</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Button size="sm" variant="ghost">
+                      <HeartIcon className="h-4 w-4 mr-1" />
+                      <span>Like</span>
+                    </Button>
+                    <Button size="sm" variant="ghost">
+                      <ShareIcon className="h-4 w-4 mr-1" />
+                      <span>Share</span>
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+              <CardFooter>
+                <Button className="m-2 py-4 w-full">
+                  <Link href='/code-snippets/details'>
+                    View Code
+                  </Link>
+                </Button>
+              </CardFooter>
+            </Card>
+            <Card>
+              <CardHeader>
+                <img
+                  className="w-20 h-20 mb-4 object-cover rounded-lg"
+                  height="100"
+                  src="/coding.jpg"
+                  style={{
+                    aspectRatio: "100/100",
+                    objectFit: "cover",
+                  }}
+                  width="100"
+                />
+                <CardTitle>React Hook Form</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 dark:text-gray-400">
+                  A simple and reusable form with validation using React Hook Form.
+                </p>
+                <div className="flex flex-wrap gap-2 my-4">
+                  <Badge variant="secondary">JavaScript</Badge>
+                  <Badge variant="secondary">React</Badge>
+                </div>
+                <div className="flex max-w-lg mx-2 items-center justify-between mt-4">
+                  <div className="flex items-center">
+                    <EyeIcon className="h-4 w-4 mr-1 stroke-gray-600" />
+                    <span className='text-xs text-slate-600'>123 Views</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Button size="sm" variant="ghost">
+                      <HeartIcon className="h-4 w-4 mr-1" />
+                      <span>Like</span>
+                    </Button>
+                    <Button size="sm" variant="ghost">
+                      <ShareIcon className="h-4 w-4 mr-1" />
+                      <span>Share</span>
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+              <CardFooter>
+                <Button className="m-2 py-4 w-full">
+                  <Link href='/code-snippets/details'>
+                    View Code
+                  </Link>
+                </Button>
+              </CardFooter>
             </Card>
           </div>
         </section>
+
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container grid items-center justify-center gap-4 px-4 md:px-6">
             <div className="space-y-2 text-center">

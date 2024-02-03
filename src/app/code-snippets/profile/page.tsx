@@ -11,18 +11,18 @@ export default function Component() {
   return (
     <main key="1" className="flex flex-col items-center justify-center min-h-screen py-2">
       <div className="flex flex-col items-center border-b-2 pb-12 justify-center space-y-4">
-        <Avatar className="h-24 w-24">
+        <Avatar className="h-24 md:h-32 w-24 md:w-32">
           <AvatarImage alt="@shadcn" src="/placeholder-avatar.jpg" />
-          <AvatarFallback>JP</AvatarFallback>
+          <AvatarFallback>BH</AvatarFallback>
         </Avatar>
         <div className="grid gap-0.5 text-xs text-center">
           <div className="font-medium text-2xl">Bobby Hall</div>
-          <div className="text-gray-500 dark:text-gray-400">example@acme.inc</div>
-          <div className="text-gray-500 dark:text-gray-400">Software Engineer at Acme Inc</div>
+          <div className="text-gray-500 md:text-lg text-base dark:text-gray-400">example@acme.inc</div>
+          <div className="text-gray-500 md:text-lg text-base dark:text-gray-400">Software Engineer at Acme Inc</div>
         </div>
           <Dialog>
             <DialogTrigger asChild>
-              <Button>Edit Profile</Button>
+              <Button size='lg'>Edit Profile</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
@@ -34,7 +34,7 @@ export default function Component() {
                   <Label className="text-right" htmlFor="name">
                     Name
                   </Label>
-                  <Input className="col-span-3" id="name" value="Jared Palmer" />
+                  <Input className="col-span-3" id="name" value="Bobby Hall" />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
                   <Label className="text-right" htmlFor="email">
@@ -46,7 +46,7 @@ export default function Component() {
                   <Label className="text-right" htmlFor="job">
                     Job Title
                   </Label>
-                  <Input className="col-span-3" id="job" value="Software Engineer at Vercel" />
+                  <Input className="col-span-3" id="job" value="Software Engineer at Acme Inc." />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
                   <Label className="text-right" htmlFor="image">
