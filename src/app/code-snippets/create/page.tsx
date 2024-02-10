@@ -32,8 +32,21 @@ import {
   TableBody,
   Table,
 } from "@/components/ui/table";
+import { useState } from "react";
 
 export default function Component() {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [tags, setTags] = useState("");
+  const [language, setLanguage] = useState("");
+  const [visibility, setVisibility] = useState("");
+  const [content, setContent] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Logic to handle form submission goes here
+  };
+
   return (
     <div className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6 lg:px-12 xl:px-16">
       <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
@@ -45,37 +58,57 @@ export default function Component() {
               Add Snippet
             </Button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
+          <DialogContent className="sm:max-w-[425px] p-6 overflow-y-scroll max-h-[400px]">
             <DialogHeader>
               <DialogTitle>Create Snippet</DialogTitle>
               <DialogDescription>
                 Create your code snippets here. Click save when you're done.
               </DialogDescription>
             </DialogHeader>
-            <div className="grid gap-4 py-4 overflow-y-scroll">
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label className="text-right" htmlFor="title">
+            <div className="flex flex-col space-y-6 py-4 w-full overflow-y-scroll">
+              <div className="grid grid-cols-2 mx-2 items-center gap-4">
+                <Label className="pl-2" htmlFor="title">
                   Title
                 </Label>
-                <Input className="col-span-3" id="title" />
+                <Input
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  className="col-span-2"
+                  id="title"
+                />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label className="text-right" htmlFor="description">
+              <div className="grid grid-cols-2 mx-2 items-center gap-4">
+                <Label className="pl-2" htmlFor="description">
                   Description
                 </Label>
-                <Input className="col-span-3" id="description" />
+                <Input
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  className="col-span-2"
+                  id="description"
+                />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <Label className="text-right" htmlFor="tags">
+              <div className="grid grid-cols-2 mx-2 items-center gap-4">
+                <Label className="pl-2" htmlFor="tags">
                   Tags
                 </Label>
-                <Input className="col-span-3" id="tags" />
+                <Input
+                  value={tags}
+                  onChange={(e) => setTags(e.target.value)}
+                  className="col-span-3"
+                  id="tags"
+                />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
-                <Label className="text-right" htmlFor="language">
+                <Label className="pl-2" htmlFor="language">
                   Language
                 </Label>
-                <Select className="col-span-3" id="language">
+                <Select
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value)}
+                  className="col-span-4"
+                  id="language"
+                >
                   <SelectTrigger className="w-24">
                     <SelectValue placeholder="Language" />
                   </SelectTrigger>
@@ -92,7 +125,12 @@ export default function Component() {
                 <Label className="text-right" htmlFor="visibility">
                   Visibility
                 </Label>
-                <Select className="col-span-3" id="visibility">
+                <Select
+                  value={visibility}
+                  onChange={(e) => setVisibility(e.target.value)}
+                  className="col-span-3"
+                  id="visibility"
+                >
                   <SelectTrigger className="w-24">
                     <SelectValue placeholder="Visibility" />
                   </SelectTrigger>
@@ -104,7 +142,7 @@ export default function Component() {
               </div>
 
               {/* Settings component */}
-              <Settings />
+              {/* <Settings /> */}
 
               <Card className="bg-black text-white">
                 <CardHeader>
@@ -114,7 +152,9 @@ export default function Component() {
                       <div className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
                       <div className="h-3 w-3 rounded-full bg-[#27c93f]" />
                     </div>
-                    <div className="text-sm">index.tsx</div>
+                    <div contentEditable className="text-sm">
+                      index.tsx
+                    </div>
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -122,26 +162,25 @@ export default function Component() {
                     className="bg-[#1e1e1e] p-4 rounded-md text-sm"
                     contentEditable
                   >
-                    <p className="text-[#7fdbca]">
-                      {`function Counter() className="pl-4 text-[#d6deeb]">const [count, setCount] = createSignal(0);`}
-                    </p>
-                    <p className="pl-4 text-[#d6deeb]">
-                      {`setInterval(() => className="pl-8 text-[#d6deeb]">setCount(count() + 1),`}
-                    </p>
-                    <p className="pl-8 text-[#d6deeb]">1000</p>
-                    <p className="pl-4 text-[#d6deeb]">{`});`}</p>
-                    <p className="text-[#7fdbca]">
-                      return
-                      <span className="text-[#d6deeb]">{`<div>The count is count()</div>`}</span>
-                      ;
-                    </p>
-                    <p className="text-[#7fdbca]">{`'}`}</p>
+                    {/* <div className="grid grid-cols-4 items-center gap-4"> */}
+                    <Label className="text-right" htmlFor="description">
+                      Content
+                    </Label>
+                    <Textarea
+                      value={content}
+                      onChange={(e) => setContent(e.target.value)}
+                      className="col-span-6 h-48"
+                      id="content"
+                    />
+                    {/* </div> */}
                   </div>
                 </CardContent>
               </Card>
             </div>
             <DialogFooter>
-              <Button type="submit">Save changes</Button>
+              <Button className="w-full" size="lg" type="submit">
+                Save changes
+              </Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
@@ -235,7 +274,7 @@ export default function Component() {
                       </div>
 
                       {/* Settings component */}
-                      <Settings />
+                      {/* <Settings /> */}
 
                       <Card className="bg-black text-white">
                         <CardHeader>
@@ -457,6 +496,8 @@ export default function Component() {
                           className="col-span-3"
                           defaultValue="// Enter your code here..."
                           id="code"
+                          value={content}
+                          onChange={e => setContent(e.target.value)}
                         />
                       </div>
                     </div>
