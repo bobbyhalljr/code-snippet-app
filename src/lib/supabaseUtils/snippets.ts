@@ -59,7 +59,7 @@ export async function getCodeSnippetDetails() {
   }
 
 // update code snippets
-export async function UpdateSnippets(title: string, content: string, language :string, userId: number, tags: string, description: string, visibility: string){
+export async function UpdateSnippets(title: string, content: string, language :string, tags: string, description: string, visibility: string){
 
     const { data, error } = await supabase
     .from('code_snippets')
@@ -67,7 +67,6 @@ export async function UpdateSnippets(title: string, content: string, language :s
         title: title,
         content: content,
         language: language,
-        user_id: userId,
         tags: tags,
         description: description,
         visibility: visibility
@@ -85,17 +84,16 @@ export async function UpdateSnippets(title: string, content: string, language :s
 export async function createSnippet(title: string, content: string, language :string, userId: number, tags: string, description: string, visibility: string){
     const { data, error } = await supabase
     .from('code_snippets')
-    .insert([
+    .insert(
         { 
             title: title,
             content: content,
             language: language,
-            user_id: userId,
             tags: tags,
             description: description,
             visibility: visibility
           },
-    ])
+    )
     .select()
 
     if (error) throw error;

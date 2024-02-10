@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import Settings from "@/components/common/settings";
+import { createSnippet } from "@/lib/supabaseUtils/snippets";
 import { CardHeader, CardContent, Card, CardTitle } from "@/components/ui/card";
 import {
   SelectValue,
@@ -45,6 +45,13 @@ export default function Component() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Logic to handle form submission goes here
+    createSnippet(title, content, language, tags, description, visibility).then(data => console.log(data))
+    setTitle('')
+    setDescription('')
+    setTags('')
+    setLanguage('')
+    setVisibility('')
+    setContent('')
   };
 
   return (
@@ -65,7 +72,7 @@ export default function Component() {
                 Create your code snippets here. Click save when you're done.
               </DialogDescription>
             </DialogHeader>
-            <div className="flex flex-col space-y-6 py-4 w-full overflow-y-scroll">
+            <form onSubmit={handleSubmit} className="flex flex-col space-y-6 py-4 w-full overflow-y-scroll">
               <div className="grid grid-cols-2 mx-2 items-center gap-4">
                 <Label className="pl-2" htmlFor="title">
                   Title
@@ -113,6 +120,7 @@ export default function Component() {
                     <SelectValue placeholder="Language" />
                   </SelectTrigger>
                   <SelectContent>
+                  <SelectItem value=" ">Language</SelectItem>
                     <SelectItem value="javascript">JavaScript</SelectItem>
                     <SelectItem value="python">Python</SelectItem>
                     <SelectItem value="java">Java</SelectItem>
@@ -135,6 +143,7 @@ export default function Component() {
                     <SelectValue placeholder="Visibility" />
                   </SelectTrigger>
                   <SelectContent>
+                    <SelectItem value=" ">Language</SelectItem>
                     <SelectItem value="public">Public</SelectItem>
                     <SelectItem value="private">Private</SelectItem>
                   </SelectContent>
@@ -176,12 +185,12 @@ export default function Component() {
                   </div>
                 </CardContent>
               </Card>
-            </div>
             <DialogFooter>
               <Button className="w-full" size="lg" type="submit">
                 Save changes
               </Button>
             </DialogFooter>
+            </form>
           </DialogContent>
         </Dialog>
       </div>
