@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { loginWithEmail, signUpWithGitHub } from '../../../lib/supabaseUtils/auth'
+import { loginWithEmail, signUpWithGitHub } from '@/lib/supabaseUtils/auth'
 import { useRouter } from 'next/navigation'
 
 export default function Component() {
